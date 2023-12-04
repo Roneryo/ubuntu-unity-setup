@@ -2,7 +2,6 @@
 install_git() {
 	sudo apt install git -y
 }
-
 install_vscode() {
 	sudo apt update
 	sudo apt install software-properties-common apt-transport-https wget -y
@@ -52,8 +51,8 @@ install_nvm() {
 install_docker() {
 	prerequisits_docker
 	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-	sudo usermod -aG docker roner
-	chmod 666 /var/run/docker.sock
+	sudo sudo usermod -aG docker roner
+	sudo chmod 666 /var/run/docker.sock
 
 	# Estos docker-desktop depende de estos paquetes
 	sudo apt install qemu-system-x86 pass uidmap
@@ -66,12 +65,16 @@ install_obsidian(){
 	dpkg -i obsidian*.deb
 	rm obsidian*.deb
 }
-
 install_unityhub(){
 	# sudo apt install libgconf-2-4
 	wget unityhub://2023.2.1f1/a6dd9a634651
 }
-
+install_and_update_discord(){
+	sudo apt purge discord -y
+	curl -0 -L -o discord.deb https://discord.com/api/download?platform=linux&format=deb & wait
+	dpkg -i discord.deb
+	rm discord.deb
+}
 # install_vscode
 # install_git
 # install_google_chrome
@@ -79,4 +82,7 @@ install_unityhub(){
 # install_docker
 # install_nvm
 # install_obsidian
-install_unityhub
+# install_unityhub
+
+# install_and_update_discord
+
